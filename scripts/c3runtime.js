@@ -4194,9 +4194,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Exps.AsJSON,
 		C3.Plugins.System.Cnds.For,
 		C3.Plugins.System.Exps.loopindex,
-		C3.Plugins.TextBox.Acts.SetCSSStyle,
 		C3.Plugins.System.Exps.len,
 		C3.Plugins.Text.Exps.Text,
+		C3.Plugins.TextBox.Acts.SetCSSStyle,
 		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.TextBox.Cnds.CompareText,
 		C3.Plugins.TextBox.Acts.SetEnabled,
@@ -4410,20 +4410,37 @@ self.C3_ExpressionFuncs = [
 		() => 7,
 		() => "次",
 		p => {
-			const n0 = p._GetNode(0);
-			const f1 = p._GetNode(1).GetBoundMethod();
-			return () => n0.ExpObject(f1("次"));
-		},
-		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(21, 1);
+			const n1 = p._GetNode(1);
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const f3 = p._GetNode(3).GetBoundMethod();
+			return () => f0(n1.ExpObject(f2(f3("次"))));
 		},
-		() => 19,
-		() => 22,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => f0(f1(21, 1));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(19, 1);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const n1 = p._GetNode(1);
+			return () => (f0(n1.ExpObject()) * 0.02);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(22, 1);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(19, 3);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(22, 3);
 		},
 		() => "background-color",
 		() => "#aed1f5",
@@ -4436,11 +4453,6 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0(7, 1);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			return () => (f0(n1.ExpObject()) * 0.02);
 		},
 		() => 60,
 		() => 100,
@@ -4494,6 +4506,7 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => f0(v1.GetValue());
 		},
+		() => 8,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const v1 = p._GetNode(1).GetVar();
