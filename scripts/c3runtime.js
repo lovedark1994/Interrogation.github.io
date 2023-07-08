@@ -4174,6 +4174,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.BinaryData,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.Arr.Acts.SetX,
+		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.Text.Acts.SetVisible,
+		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.Touch.Cnds.OnTouchObject,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Text.Cnds.IsRunningTypewriterText,
@@ -4186,10 +4189,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.Text.Cnds.CompareInstanceVar,
 		C3.Plugins.Text.Acts.TypewriterText,
-		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.System.Cnds.TriggerOnce,
-		C3.Plugins.Text.Acts.SetVisible,
-		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.LocalStorage.Acts.SetItem,
 		C3.Plugins.Arr.Exps.AsJSON,
 		C3.Plugins.System.Cnds.For,
@@ -4416,15 +4416,15 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(18, 1);
+			return () => f0(21, 1);
 		},
 		() => 19,
+		() => 22,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(24, 1);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => f0(f1(21, 1));
 		},
-		() => 25,
-		() => 22,
 		() => "background-color",
 		() => "#aed1f5",
 		() => "color",
