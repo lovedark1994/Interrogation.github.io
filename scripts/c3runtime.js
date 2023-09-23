@@ -4351,6 +4351,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Behaviors.Tween.Acts.TweenValue,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
+		C3.Plugins.Sprite.Cnds.IsVisible,
 		C3.Behaviors.Tween.Cnds.IsPlaying,
 		C3.Plugins.System.Acts.SetLayerOpacity,
 		C3.Behaviors.Tween.Exps.Value,
@@ -4643,7 +4644,7 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
-			return () => (f0(n1.ExpObject()) * 0.2);
+			return () => (f0(n1.ExpObject()) * 0.1);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -4654,6 +4655,7 @@ self.C3_ExpressionFuncs = [
 			return () => f0(16, 1);
 		},
 		() => "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXgMlHXKgBeNNEYcHSTKXroskbxvRypDKK_7oC_1T3qmCDRDjJnWSdOJT8JtmtzYhfEZGzE3SgmnP4/pub?output=csv",
+		() => 9,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0();
@@ -4687,7 +4689,6 @@ self.C3_ExpressionFuncs = [
 			return () => f0(v1.GetValue());
 		},
 		() => 8,
-		() => 9,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const v1 = p._GetNode(1).GetVar();
