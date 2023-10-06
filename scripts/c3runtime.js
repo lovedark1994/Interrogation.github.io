@@ -4305,6 +4305,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.Browser.Acts.GoToURL,
 		C3.Plugins.Arr.Acts.SetX,
+		C3.Plugins.System.Cnds.CompareBetween,
+		C3.Plugins.System.Exps.int,
 		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.Touch.Cnds.OnTouchObject,
@@ -4314,7 +4316,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
-		C3.Plugins.System.Exps.int,
 		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.Text.Cnds.CompareInstanceVar,
@@ -4347,7 +4348,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.AJAX.Exps.LastData,
 		C3.Plugins.Browser.Exps.QueryParam,
 		C3.Plugins.System.Acts.GoToLayout,
-		C3.Plugins.System.Cnds.CompareBetween,
 		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Behaviors.Tween.Acts.TweenValue,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
@@ -4380,6 +4380,7 @@ self.C3_JsPropNameTable = [
 	{被按: 0},
 	{選擇按鈕A: 0},
 	{選擇按鈕文字: 0},
+	{聽話引導: 0},
 	{AJAX: 0},
 	{Array: 0},
 	{Browser: 0},
@@ -4531,8 +4532,14 @@ self.C3_ExpressionFuncs = [
 			return () => ((((v0.GetValue() * 4) - 1) + (v1.GetValue() * 2)) - 2);
 		},
 		() => 0,
-		() => 0.3,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			return () => f0(v1.GetValue());
+		},
 		() => 1,
+		() => 7,
+		() => 0.3,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
@@ -4556,6 +4563,11 @@ self.C3_ExpressionFuncs = [
 			const v6 = p._GetNode(6).GetVar();
 			const v7 = p._GetNode(7).GetVar();
 			return () => (f0(n1.ExpObject(v2.GetValue())) + f3(f4(((v5.GetValue() + 1) + 1), (((((v6.GetValue() * 4) - 1) + (v7.GetValue() * 2)) - 2) + 1))));
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			const v1 = p._GetNode(1).GetVar();
+			return () => (((((v0.GetValue() * 4) - 1) + (v1.GetValue() * 2)) - 2) + 1);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -4583,7 +4595,6 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
-		() => 7,
 		() => "次",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -4655,7 +4666,7 @@ self.C3_ExpressionFuncs = [
 			return () => f0(16, 1);
 		},
 		() => "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXgMlHXKgBeNNEYcHSTKXroskbxvRypDKK_7oC_1T3qmCDRDjJnWSdOJT8JtmtzYhfEZGzE3SgmnP4/pub?output=csv",
-		() => 9,
+		() => 4,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0();
@@ -4683,18 +4694,13 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => f0(f1("ch"));
 		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const v1 = p._GetNode(1).GetVar();
-			return () => f0(v1.GetValue());
-		},
 		() => 8,
+		() => 9,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const v1 = p._GetNode(1).GetVar();
 			const v2 = p._GetNode(2).GetVar();
-			const v3 = p._GetNode(3).GetVar();
-			return () => f0(v1.GetValue(), ((((v2.GetValue() * 4) - 1) + (v3.GetValue() * 2)) - 2));
+			return () => f0(v1.GetValue(), v2.GetValue());
 		},
 		() => "2",
 		() => "淡",
@@ -4717,7 +4723,6 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => f0(4, (33 + v1.GetValue()));
 		},
-		() => 4,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() + 10);
